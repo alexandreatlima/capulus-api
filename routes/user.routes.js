@@ -46,8 +46,11 @@ userRouter.post("/signup", async (req, res) => {
 userRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
 
     const user = await UserModel.findOne({ email: email });
+
+    console.log(user);
 
     if (!user) {
       return res.status(404).json({ msg: "Email ou senha invalidos." });
